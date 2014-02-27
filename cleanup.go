@@ -1,7 +1,7 @@
-// Package goling is a small package of natural language
-// processing algorithms. It supports spell-check, segmentation
-// , and calculating string similarity, cosine similarity
-// and Levenshtein distance.
+// Package goling is a small package of natural
+// language processing. It supports spell-check,
+// segmentation, and calculating string similarity
+// with cosine similarity and Levenshtein distance.
 package goling
 
 import "strings"

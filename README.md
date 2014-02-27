@@ -1,7 +1,7 @@
 goling [![Build Status](https://travis-ci.org/gyuho/goling.png?branch=master)](https://travis-ci.org/gyuho/goling) [![GoDoc](https://godoc.org/github.com/gyuho/goling?status.png)](http://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/710664/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/710664)
 ==========
 
-Package goling is a small package of natural language processing algorithms. It supports spell-check, segmentation, and calculating string similarity, cosine similarity and Levenshtein distance.
+Package goling is a small package of natural language processing. It supports spell-check, segmentation, and calculating string similarity with cosine similarity and Levenshtein distance.
 
 
 Getting Started
