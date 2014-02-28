@@ -25,6 +25,7 @@ func ExpandApostrophe(str string) string {
 
 	str = strings.Replace(str, "won't", "will not", -1)
 	str = strings.Replace(str, "can't", "can not", -1)
+	str = strings.Replace(str, "mustn't", "must not", -1)
 
 	str = strings.Replace(str, "haven't", "have not", -1)
 	str = strings.Replace(str, "hasn't", "has not", -1)
