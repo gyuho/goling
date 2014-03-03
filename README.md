@@ -40,6 +40,7 @@ YouTube Clips by me
 goling Package Hierarchy
 ==========
 ```go
+data/		# Training Data
 sg/			# String Segmentation Algorithm
 simi/		# String Similarity Algorithms
 spell/		# Spell Check Algorithms

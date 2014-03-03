@@ -2,9 +2,9 @@ package st
 
 import "strings"
 
-// DeleteSuffix returns the stem, in English.
+// Stem returns the stem, in English.
 // It receives only one word.
-func DeleteSuffix(str string) string {
+func Stem(str string) string {
 	str = ReplaceNonAlnumWithSpace(strings.ToLower(str))
 
 	// start with the longest suffix
@@ -38,4 +38,15 @@ func DeleteSuffix(str string) string {
 
 	// convert it back to string format
 	return str
+}
+
+// StemText gets stem from text.
+func StemText(str string) string {
+	nstr := ReplaceNonAlnumWithSpace(strings.ToLower(str))
+	nslice := GetWords(nstr)
+	var result []string
+	for _, elem := range nslice {
+		result = append(result, Stem(elem))
+	}
+	return strings.Join(result, " ")
 }
