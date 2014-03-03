@@ -28,6 +28,7 @@ go run [path/filename]
 
 YouTube Clips by me
 ==========
+<a href="http://www.youtube.com/watch?v=927YDZH_MLo" target="_blank"><img src="http://img.youtube.com/vi/927YDZH_MLo/0.jpg"></a>
 <ul>
 	<li><a href="https://www.youtube.com/watch?v=dctzCcYt4AM&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD&index=1" target="_blank">Bayesian Classification</li>
 	<li><a href="https://www.youtube.com/watch?v=927YDZH_MLo&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD" target="_blank">String Similarity, Cosine Similarity, Levenshtein Distance</li>
