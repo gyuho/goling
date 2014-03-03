@@ -14,8 +14,8 @@ import (
 func StringSimilarity(str1, str2 string) float64 {
 
 	// First remove unnecessary characters: punctuation, affix
-	nstr1 := st.DeleteSuffix(str1)
-	nstr2 := st.DeleteSuffix(str2)
+	nstr1 := st.Stem(str1)
+	nstr2 := st.Stem(str2)
 
 	// CosineSimilarity: higher result means higher similarity.
 	// range from 0 to 1, so scale them up to 1000
