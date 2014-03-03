@@ -34,6 +34,7 @@ YouTube Clips by me
 	<li><a href="https://www.youtube.com/watch?v=3qHx1VCcobY&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD" target="_blank">Spell Check</li>
 </ul>
 
+[↑ top](https://github.com/gyuho/goling#goling---)
 
 
 goling Package Hierarchy
@@ -62,3 +63,5 @@ str6 := "I think Go has a great future in Web development. For other applicative
 StringSimilarity(str5, str6)
 // 321.95180522788064
 ```
+
+[↑ top](https://github.com/gyuho/goling#goling---)
