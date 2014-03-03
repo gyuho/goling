@@ -40,11 +40,8 @@ goling Package Hierarchy
 ==========
 ```go
 sg/			# String Segmentation Algorithm
-
-simi/				# String Similarity Algorithms
-
-spell/			# Spell Check Algorithms
-
+simi/		# String Similarity Algorithms
+spell/		# Spell Check Algorithms
 st/			# String Manipulating Functions
 ```
 [↑ top](https://github.com/gyuho/goling#goling---)
@@ -54,14 +51,14 @@ st/			# String Manipulating Functions
 Example
 ==========
 ```go
-	// similarly related
-	str1 := "golang: read text file into string array (and write)"
-	str2 := "writing to a text file gets cut short using java"
-	StringSimilarity(str1, str2)
-	// 1538.2096034883082 
+// similarly related
+str1 := "golang: read text file into string array (and write)"
+str2 := "writing to a text file gets cut short using java"
+StringSimilarity(str1, str2)
+// 1538.2096034883082 
 
-	str5 := "What's going on has to do with the pragmatics of conversation. In particular, you're flouting a conversational rule, called the Maxim of Quantity.This rule states that what a person contributes to a conversation should be neither more nor less than what is required in the context."
-	str6 := "I think Go has a great future in Web development. For other applicative areas, I'm less certain as the development of the runtime is entirely focused on the problems associated with running stuff for the web: large static binaries, etc."
-	StringSimilarity(str5, str6)
-	// 321.95180522788064
+str5 := "What's going on has to do with the pragmatics of conversation. In particular, you're flouting a conversational rule, called the Maxim of Quantity.This rule states that what a person contributes to a conversation should be neither more nor less than what is required in the context."
+str6 := "I think Go has a great future in Web development. For other applicative areas, I'm less certain as the development of the runtime is entirely focused on the problems associated with running stuff for the web: large static binaries, etc."
+StringSimilarity(str5, str6)
+// 321.95180522788064
 ```
