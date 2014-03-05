@@ -1,7 +1,7 @@
 goling [![Build Status](https://travis-ci.org/gyuho/goling.png?branch=master)](https://travis-ci.org/gyuho/goling) [![GoDoc](https://godoc.org/github.com/gyuho/goling?status.png)](http://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/710664/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/710664)
 ==========
 
-Package goling provides basic features for string manipulation and natural language processing. It also provides spell-check, segmentation, and calculating string similarity algorithms.
+Package goling implements spell-check, segmentation, and string similarity algorithms(Levenshtein Distance, Cosine Similarity).
 
 
 Getting Started

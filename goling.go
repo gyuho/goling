@@ -1,4 +1,4 @@
-// Package goling provides basic features for string manipulation
-// and natural language processing. It also provides spell-check,
-// segmentation, and calculating string similarity algorithms.
+// Package goling implements spell-check, segmentation
+// , and string similarity algorithms(Levenshtein Distance
+// , Cosine Similarity).
 package goling
