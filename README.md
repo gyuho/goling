@@ -38,7 +38,7 @@ YouTube Clips by me
 [↑ top](https://github.com/gyuho/goling#goling---)
 
 
-goling Package Hierarchy
+Package Hierarchy
 ==========
 ```go
 data/		# Training Data
