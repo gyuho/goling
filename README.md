@@ -1,4 +1,4 @@
-goling [![Build Status](https://travis-ci.org/gyuho/goling.png?branch=master)](https://travis-ci.org/gyuho/goling) [![GoDoc](https://godoc.org/github.com/gyuho/goling?status.png)](http://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/710664/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/710664)
+goling [![Build Status](https://travis-ci.org/gyuho/goling.png?branch=master)](https://travis-ci.org/gyuho/goling) [![GoDoc](https://godoc.org/github.com/gyuho/goling?status.png)](http://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/714473/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/714473)
 ==========
 
 Package goling implements spell-check, segmentation, and string similarity algorithms(Levenshtein Distance, Cosine Similarity).
