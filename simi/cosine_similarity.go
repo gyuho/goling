@@ -24,25 +24,24 @@ import (
 // since two sequences point to the same point.
 // 90° means that the two texts are totally different.
 func CosineSimilarity(str1, str2 string) float64 {
-
 	// to clear out the unnecessary characters
 	// And consider the case that the string has only one word.
 	temp1 := st.GetWords(str1)
-	var arr1 []string
+	sli1 := []string{}
 	if len(temp1) == 1 {
 		// func Split(s, sep string) []string
-		arr1 = strings.Split(temp1[0], "")
+		sli1 = strings.Split(temp1[0], "")
 	} else {
-		arr1 = temp1
+		sli1 = temp1
 	}
 
 	temp2 := st.GetWords(str2)
-	var arr2 []string
+	sli2 := []string{}
 	if len(temp2) == 1 {
 		// func Split(s, sep string) []string
-		arr2 = strings.Split(temp2[0], "")
+		sli2 = strings.Split(temp2[0], "")
 	} else {
-		arr2 = temp2
+		sli2 = temp2
 	}
 
 	// to convert string to vector
@@ -50,18 +49,18 @@ func CosineSimilarity(str1, str2 string) float64 {
 
 	// vect1 contains the frequencies of each character
 	vect1 := make(map[string]int)
-	for _, elem := range arr1 {
+	for _, elem := range sli1 {
 		vect1[elem] += 1
 	}
 
 	// vect2 contains the frequencies of each character
 	vect2 := make(map[string]int)
-	for _, elem := range arr2 {
+	for _, elem := range sli2 {
 		vect2[elem] += 1
 	}
 
 	// intersection contains common characters
-	var intersection []string
+	intersection := []string{}
 
 	// traverse keys and add what is common to both.
 	// (keys, in Hash/Map, are like indices in array)
