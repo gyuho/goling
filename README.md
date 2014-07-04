@@ -10,21 +10,7 @@ Getting Started
 - [gowalker.org](http://gowalker.org/github.com/gyuho/goling#_index)
 
 ```go
-// to install, in the command line
-mkdir $HOME/go
-export GOPATH=$HOME/go
 go get github.com/gyuho/goling
-
-// to include, in the code
-import "github.com/gyuho/goling"
-
-// to call the function, in the code
-[package_name].[function]
-
-// to execute
-go install
-// or
-go build
 ```
 
 
