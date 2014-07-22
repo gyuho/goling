@@ -1,4 +1,3 @@
-// Package seg returns the segmentation of string.
 package seg
 
 /*
@@ -29,8 +28,8 @@ import (
 
 // 1. Read the training data
 
-// CalculateWordProbability calculates probability
-// : for each word, calculate how many times it occurs.
+// CalculateWordProbability calculates probability:
+// for each word, calculate how many times it occurs.
 func CalculateWordProbability(reader io.Reader) map[string]float64 {
 	// func NewScanner(r io.Reader) *Scanner
 	// NewScanner returns a new Scanner to read from r.
@@ -66,7 +65,7 @@ func CalculateWordProbability(reader io.Reader) map[string]float64 {
 		*/
 		// if exists
 		if exist {
-			wordAndProb[word] += 1
+			wordAndProb[word]++
 		} else {
 			wordAndProb[word] = 1
 		}
@@ -96,14 +95,14 @@ func CalculateWordNotInList(word string, n int) float64 {
 // ConstructWordProb constructs the word probability
 // from the sample text file, and returns the probability.
 func ConstructWordProb(reader io.Reader) func(string) float64 {
-	wordprob_map := CalculateWordProbability(reader)
+	wordprobMap := CalculateWordProbability(reader)
 
 	return func(str string) float64 {
-		score, exist := wordprob_map[str]
+		score, exist := wordprobMap[str]
 		if exist {
 			return score
 		}
-		return CalculateWordNotInList(str, len(wordprob_map))
+		return CalculateWordNotInList(str, len(wordprobMap))
 	}
 }
 
@@ -127,7 +126,7 @@ func PossibleSplits(text string) []split {
 // , from the candidates.
 func GetMostPlausible(words [][]string, getprobStr func(string) float64) []string {
 	var max []string
-	maximum_score := float64(-1)
+	maximumScore := float64(-1)
 
 	for _, candidate := range words {
 		var totalscore float64 = 1
@@ -135,15 +134,16 @@ func GetMostPlausible(words [][]string, getprobStr func(string) float64) []strin
 			totalscore *= getprobStr(word)
 		}
 
-		if maximum_score < totalscore {
+		if maximumScore < totalscore {
 			max = candidate
-			maximum_score = totalscore
+			maximumScore = totalscore
 		}
 	}
 
 	return max
 }
 
+// BeenSeen stores segmentations that have been seen.
 var BeenSeen = map[string][]string{}
 
 // GetSegment returns the highest-scoring segmentation.
@@ -158,7 +158,8 @@ func GetSegment(text string, getprobStr func(string) float64) []string {
 		return result
 	}
 
-	candidates := make([][]string, 0)
+	// candidates := make([][]string, 0)
+	var candidates [][]string
 
 	// 4. Traverse all possible splits
 	for _, thesplit := range PossibleSplits(text) {

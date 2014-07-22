@@ -1,11 +1,10 @@
-// Package st provides basic string manipulating functions.
 package st
 
 import "strings"
 
 // CleanUp cleans up unnecessary characters in string.
-// It cleans up the blank characters that carry no meaning in context
-// , converts all whitespaces into single whitespace.
+// It cleans up the blank characters that carry no meaning in context,
+// converts all white spaces into single whitespace.
 // String is immutable, which means the original string would not change.
 func CleanUp(str string) string {
 

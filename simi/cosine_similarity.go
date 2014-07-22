@@ -17,11 +17,9 @@ import (
 // similarity = cos(θ) = A·B/|A|*|B|
 // Used for analyzing the string similarity.
 // The similarity scales between 0 and 1(maximum).
-// The bigger the return value is,
-// the more similar the two texts are.
+// The bigger the return value is, the more similar the two texts are.
 // cos 0° = 1, cos 90° = 0
-// 0° means that the two texts are equal,
-// since two sequences point to the same point.
+// 0° means that the two texts are equal, since two sequences point to the same point.
 // 90° means that the two texts are totally different.
 func CosineSimilarity(str1, str2 string) float64 {
 	// to clear out the unnecessary characters

@@ -1,7 +1,7 @@
 package seg
 
 import (
-	"fmt"
+	"log"
 	"os"
 )
 
@@ -9,8 +9,7 @@ import (
 func OpenFile(filename string) *os.File {
 	f, err := os.Open(filename)
 	if err != nil {
-		fmt.Println("Unable to read file", filename)
-		os.Exit(1)
+		log.Fatal("Unable to read file", err)
 	}
 	return f
 }
