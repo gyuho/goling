@@ -1,3 +1,7 @@
+In Progress...
+
+Will be rewritten...
+
 goling [![Build Status](https://travis-ci.org/gyuho/goling.svg?branch=master)](https://travis-ci.org/gyuho/goling) [![GoDoc](https://godoc.org/github.com/gyuho/goling?status.png)](http://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/714473/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/714473)
 ==========
 
