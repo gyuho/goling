@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-Being rewritten... in a separate branch. No timeline... but it will be better!
-
-
->>>>>>> ae1fdc921abeb1569ce3328ed17d660a29da3a3a
 goling [![Build Status](https://travis-ci.org/gyuho/goling.svg?branch=master)](https://travis-ci.org/gyuho/goling) [![GoDoc](https://godoc.org/github.com/gyuho/goling?status.png)](http://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/714473/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/714473)
 ==========
 
@@ -21,3 +15,4 @@ YouTube Tutorial by `gyuho`
 </ul>
 
 [↑ top](https://github.com/gyuho/goling#goling---)
+
