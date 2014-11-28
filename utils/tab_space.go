@@ -1,4 +1,4 @@
-package st
+package utils
 
 import "regexp"
 

@@ -1,55 +1,52 @@
-package st
+package utils
 
 import (
 	"strconv"
 	"strings"
 )
 
-// InsertCommaInt inserts comma in every three digit.
+// InsertCommaInt64 inserts comma in every three digit.
 // It returns the new version of input integer, in string format.
-func InsertCommaInt(num int64) string {
+func InsertCommaInt64(num int64) string {
 	// func FormatUint(i uint64, base int) string
 	str := strconv.FormatInt(num, 10)
-	var numslice []string
+	result := []string{}
 	i := len(str) % 3
 	if i == 0 {
 		i = 3
 	}
 	for index, elem := range strings.Split(str, "") {
 		if i == index {
-			numslice = append(numslice, ",")
+			result = append(result, ",")
 			i += 3
 		}
-		numslice = append(numslice, elem)
+		result = append(result, elem)
 	}
-	return strings.Join(numslice, "")
+	return strings.Join(result, "")
 }
 
-// InsertCommaFloat inserts comma in every three digit in integer part.
+// InsertCommaFloat64 inserts comma in every three digit in integer part.
 // It returns the new version of input float number, in string format.
-func InsertCommaFloat(num float64) string {
+func InsertCommaFloat64(num float64) string {
 	// FormatFloat(num, 'f', 6, 64) with precision 6
 	// for arbitrary precision, put -1
 	str := strconv.FormatFloat(num, 'f', -1, 64)
-
 	slice := strings.Split(str, ".")
-
 	intpart := slice[0]
 	floatpart := slice[1]
-
-	var intresult []string
+	result := []string{}
 	i := len(intpart) % 3
 	if i == 0 {
 		i = 3
 	}
 	for index, elem := range strings.Split(intpart, "") {
 		if i == index {
-			intresult = append(intresult, ",")
+			result = append(result, ",")
 			i += 3
 		}
-		intresult = append(intresult, elem)
+		result = append(result, elem)
 	}
 
-	intpart = strings.Join(intresult, "")
+	intpart = strings.Join(result, "")
 	return intpart + "." + floatpart
 }

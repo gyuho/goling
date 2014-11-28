@@ -1,8 +1,8 @@
-package st
+package utils
 
 import "testing"
 
-func Test_AllTabIntoSingleSpace(t *testing.T) {
+func TestAllTabIntoSingleSpace(t *testing.T) {
 	str := "Hello	World	!	Hello"
 	r := AllTabIntoSingleSpace(str)
 	if r != "Hello World ! Hello" {
@@ -10,7 +10,7 @@ func Test_AllTabIntoSingleSpace(t *testing.T) {
 	}
 }
 
-func Test_AllSpaceIntoSingleTab(t *testing.T) {
+func TestAllSpaceIntoSingleTab(t *testing.T) {
 	str := "Hello World! Hello"
 	r := AllSpaceIntoSingleTab(str)
 
@@ -19,7 +19,7 @@ func Test_AllSpaceIntoSingleTab(t *testing.T) {
 	}
 }
 
-func Test_TabToSpace(t *testing.T) {
+func TestTabToSpace(t *testing.T) {
 	str := "Hello	World	Hello"
 	r := TabToSpace(str)
 
@@ -28,7 +28,7 @@ func Test_TabToSpace(t *testing.T) {
 	}
 }
 
-func Test_SpaceToTab(t *testing.T) {
+func TestSpaceToTab(t *testing.T) {
 	str := "Hello World Hello"
 	r := SpaceToTab(str)
 
@@ -37,7 +37,7 @@ func Test_SpaceToTab(t *testing.T) {
 	}
 }
 
-func Test_DeleteSpace(t *testing.T) {
+func TestDeleteSpace(t *testing.T) {
 	str := "Hello World	Hello"
 	r := DeleteSpace(str)
 
@@ -46,7 +46,7 @@ func Test_DeleteSpace(t *testing.T) {
 	}
 }
 
-func Test_DeleteTab(t *testing.T) {
+func TestDeleteTab(t *testing.T) {
 	str := "Hello	World Hello"
 	r := DeleteTab(str)
 
