@@ -106,3 +106,22 @@ func SplitToSentences(str string) []string {
 	}
 	return result
 }
+
+// CountCharacter returns the total number of single characters.
+func CountCharacter(str string) int {
+	str = CleanUp(str)
+	slice := strings.Split(str, "")
+	return len(slice)
+}
+
+// CountWord returns the total number of words.
+func CountWord(str string) int {
+	slice := SplitToWords(str)
+	return len(slice)
+}
+
+// CountSentence return the total number of sentences.
+func CountSentence(str string) int {
+	slice := SplitToSentences(str)
+	return len(slice)
+}
