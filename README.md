@@ -3,6 +3,7 @@ goling [![Build Status](https://travis-ci.org/gyuho/goling.svg?branch=master)](h
 
 Package goling is a set of packages in linguistics, natural language processing.
 
+<br>
 
 YouTube Tutorial by `gyuho`
 ==========
