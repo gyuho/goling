@@ -1,3 +1,2 @@
-// Package goling implements spell-check, segmentation,
-// and string similarity algorithms(Levenshtein Distance, Cosine Similarity).
+// Package goling is a set of packages in linguistics, natural language processing.
 package goling
