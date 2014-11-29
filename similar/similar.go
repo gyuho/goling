@@ -100,33 +100,25 @@ func Cosine(str1, str2 string) float64 {
 // because different texts take more edits than similar texts.
 // Insertion, deletion, and substitution each costs 1 edit.
 func Levenshtein(str1, str2 string) float64 {
-
 	// to clear out the unnecessary characters
 	str1 = utils.ReplaceNonAlnum(str1, " ")
 	str2 = utils.ReplaceNonAlnum(str2, " ")
 
-	distance := make2Dslice(len(str1)+1, len(str2)+1)
-
 	// initialize the distance array, with position
+	distance := make2Dslice(len(str1)+1, len(str2)+1)
 	for y := 0; y <= len(str1); y++ {
 		distance[y][0] = y
 	}
-
-	// initialize the distance array, with position
 	for x := 0; x <= len(str2); x++ {
 		distance[0][x] = x
 	}
 
 	for i := 0; i < len(str1); i++ {
-
 		for j := 0; j < len(str2); j++ {
-
-			// edit cost
 			edit := 1
 			if str1[i] == str2[j] {
 				edit = 0
 			}
-
 			// distance[i][j+1] + 1 : delete/insert from str1
 			// distance[i+1][j] + 1 : delete/insert from str2
 			// distance[i][j] + edit : delete/insert from both
@@ -137,12 +129,11 @@ func Levenshtein(str1, str2 string) float64 {
 			)
 		}
 	}
-
-	// equal texts need 0 edit distance
 	if distance[len(str1)][len(str2)] == 0 {
 		// smoothing
 		return 0.0001
 	}
+
 	return float64(distance[len(str1)][len(str2)])
 }
 
