@@ -114,10 +114,8 @@ func Get(text string, myfunc func(string) float64) []string {
 
 	candidates := [][]string{}
 	for _, thesplit := range getsplit(text) {
-		candidates = append(
-			candidates,
-			append(
-				[]string{thesplit.Head},
+		candidates = append(candidates,
+			append([]string{thesplit.Head},
 				Get(thesplit.Tail, myfunc)...,
 			),
 		)
