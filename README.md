@@ -1,4 +1,4 @@
-goling [![Build Status](https://travis-ci.org/gyuho/goling.svg?branch=master)](https://travis-ci.org/gyuho/goling) [![GoDoc](https://godoc.org/github.com/gyuho/goling?status.png)](http://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/714473/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/714473)
+goling [![Build Status](https://travis-ci.org/gyuho/goling.svg?branch=master)](https://travis-ci.org/gyuho/goling) [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/gyuho/goling) [![Project Stats](http://www.ohloh.net/p/714473/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/714473)
 ==========
 
 Package goling is a set of packages in linguistics, natural language processing.
