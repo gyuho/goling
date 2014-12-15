@@ -33,7 +33,7 @@ type API struct {
 func New() (*API, error) {
 	akey := os.Getenv("THESAURUS_KEY")
 	if akey == "" {
-		return nil, errors.New("no environment variable set for dictionary")
+		return nil, errors.New("no environment variable THESAURUS_KEY")
 	}
 	api := API{
 		key:    akey,
