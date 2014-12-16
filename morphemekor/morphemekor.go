@@ -2,26 +2,21 @@ package morphemekor
 
 import (
 	"bytes"
-	stdlog "log"
-	"os"
 	"strings"
 )
 
-// func main() {
-// 	// bs := []byte{}
-// 	// b := New().Add("morphemekor")
-// 	// for {
-// 	// 	n, err := b.ReadByte()
-// 	// 	if err != nil {
-// 	// 		log.Println(err)
-// 	// 		break
-// 	// 	}
-// 	// 	bs = append(bs, n)
-// 	// }
-// 	// fmt.Println(bs)
-// 	// fmt.Println(string(bs))
-// 	fmt.Println(Segment("나는친구한테듣는다안녕"))
+// bs := []byte{}
+// b := New().Add("morphemekor")
+// for {
+// 	n, err := b.ReadByte()
+// 	if err != nil {
+// 		log.Println(err)
+// 		break
+// 	}
+// 	bs = append(bs, n)
 // }
+// fmt.Println(bs)
+// fmt.Println(string(bs))
 
 // Stream is a stream of bytes.
 type Stream struct {
@@ -53,17 +48,6 @@ func (s *Stream) Get() string {
 	return s.Buffer.String()
 }
 
-var log *stdlog.Logger
-
-func init() {
-	// import stdlog "log"
-	log = stdlog.New(
-		os.Stdout,
-		"[Log] ",
-		stdlog.Ldate|stdlog.Ltime|stdlog.Lshortfile,
-	)
-}
-
 // Segment segments Korean with morphemic approach.
 func Segment(str string) string {
 	if len(str)/3 < 4 {
@@ -74,7 +58,7 @@ func Segment(str string) string {
 		isInflection1[elem] = true
 	}
 	isTargetEnding1 := make(map[string]bool)
-	for _, elem := range strings.Split("다,고,지,마,지만", ",") {
+	for _, elem := range strings.Split("다,고,지,마,지", ",") {
 		isTargetEnding1[elem] = true
 	}
 	isTargetEnding2 := make(map[string]bool)
@@ -82,7 +66,7 @@ func Segment(str string) string {
 		isTargetEnding2[elem] = true
 	}
 	isPostposition1 := make(map[string]bool)
-	for _, elem := range strings.Split("은,이,가,도,을,를,께,로,의,와,과", ",") { // 는,
+	for _, elem := range strings.Split("은,는,이,가,도,을,를,께,로,의,와,과", ",") {
 		isPostposition1[elem] = true
 	}
 	isPostposition2 := make(map[string]bool)
@@ -90,78 +74,63 @@ func Segment(str string) string {
 		isPostposition2[elem] = true
 	}
 	isPostposition3 := make(map[string]bool)
-	for _, elem := range strings.Split("에게,한테,으로,에서", ",") {
+	for _, elem := range strings.Split("에게,에서,한테,으로", ",") {
 		isPostposition3[elem] = true
 	}
-
 	buffer := New()
-	wasInflection := false
-	doSkip := false
 	characters := strings.Split(str, "")
-
-	for idx, elem := range characters {
-		if doSkip {
-			doSkip = false
-			continue
-		}
-		if idx < 2 {
+	for idx := 0; idx < len(characters); idx++ {
+		elem := characters[idx]
+		if idx == 0 {
 			buffer.Add(elem)
-			doSkip = false
 			continue
 		}
 		if elem == " " {
 			buffer.Add(elem)
-			doSkip = false
 			continue
 		}
+		// Check if the character is inflection
 		if _, ok := isInflection1[elem]; ok {
-			wasInflection = true
-			doSkip = false
 			buffer.Add(elem)
-			continue
-		}
-		if wasInflection {
-			if _, ok := isTargetEnding1[elem]; ok {
-				buffer.Add(elem)
-				log.Println(elem)
-				buffer.Add(" ")
-				wasInflection = false
-				doSkip = false
-				continue
-			} else {
-				if len(characters) > idx+1 {
-					if _, ok := isTargetEnding2[elem]; ok {
-						buffer.Add(elem)
-						log.Println(elem)
-						buffer.Add(" ")
-						wasInflection = false
-						doSkip = false
-						continue
+			// Check the next chracter
+			if len(characters) > idx+1 {
+				nelem1 := characters[idx+1]
+				if _, ok := isTargetEnding1[nelem1]; ok {
+					// Check the second next chracter
+					if len(characters) > idx+2 {
+						nelem2 := characters[idx+2]
+						if _, ok := isTargetEnding2[nelem1+nelem2]; ok {
+							buffer.Add(nelem1 + nelem2)
+							buffer.Add(" ")
+							idx = idx + 2
+							continue
+						}
 					}
+					buffer.Add(nelem1)
+					buffer.Add(" ")
+					idx++
+					continue
 				}
 			}
+			continue
 		}
+		// Check if the character is postposition
 		if _, ok := isPostposition1[elem]; ok {
 			buffer.Add(elem)
 			buffer.Add(" ")
-			wasInflection = false
 			continue
 		} else if _, ok := isPostposition2[elem]; ok {
 			if len(characters) > idx+1 {
-				char := characters[idx] + characters[idx+1]
-				if _, ok := isPostposition3[char]; ok {
-					buffer.Add(char)
-					log.Println(char)
+				nelem2 := characters[idx+1]
+				if _, ok := isPostposition3[elem+nelem2]; ok {
+					buffer.Add(elem + nelem2)
 					buffer.Add(" ")
-					wasInflection = false
-					doSkip = true
+					idx++
 					continue
 				}
 			}
 		}
-		wasInflection = false
-		doSkip = false
 		buffer.Add(elem)
 	}
-	return buffer.Get()
+	return strings.TrimSpace(buffer.Get())
 }
