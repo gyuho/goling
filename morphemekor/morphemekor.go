@@ -49,6 +49,7 @@ func (s *Stream) Get() string {
 }
 
 // Segment segments Korean with morphemic approach.
+// (Reference: https://github.com/gyuho/learn_other/blob/master/ling105/gyuho.pdf)
 func Segment(str string) string {
 	if len(str)/3 < 4 {
 		return str
