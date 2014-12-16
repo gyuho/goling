@@ -79,14 +79,17 @@ func Segment(str string) string {
 	}
 	buffer := New()
 	characters := strings.Split(str, "")
+	marker := 0 // another index in word phrase
 	for idx := 0; idx < len(characters); idx++ {
 		elem := characters[idx]
-		if idx == 0 {
+		if idx == 0 || marker == 0 {
 			buffer.Add(elem)
+			marker++
 			continue
 		}
 		if elem == " " {
 			buffer.Add(elem)
+			marker++
 			continue
 		}
 		// Check if the character is inflection
@@ -103,21 +106,25 @@ func Segment(str string) string {
 							buffer.Add(nelem1 + nelem2)
 							buffer.Add(" ")
 							idx = idx + 2
+							marker = 0
 							continue
 						}
 					}
 					buffer.Add(nelem1)
 					buffer.Add(" ")
 					idx++
+					marker = 0
 					continue
 				}
 			}
+			marker++
 			continue
 		}
 		// Check if the character is postposition
 		if _, ok := isPostposition1[elem]; ok {
 			buffer.Add(elem)
 			buffer.Add(" ")
+			marker = 0
 			continue
 		} else if _, ok := isPostposition2[elem]; ok {
 			if len(characters) > idx+1 {
@@ -126,11 +133,13 @@ func Segment(str string) string {
 					buffer.Add(elem + nelem2)
 					buffer.Add(" ")
 					idx++
+					marker = 0
 					continue
 				}
 			}
 		}
 		buffer.Add(elem)
+		marker++
 	}
 	return strings.TrimSpace(buffer.Get())
 }
