@@ -8,6 +8,8 @@ import (
 	"os"
 	"sort"
 	"strings"
+
+	"github.com/gyuho/goling/utils"
 )
 
 // func main() {
@@ -84,9 +86,18 @@ func (a *API) GetSynonyms(word string) ([]string, error) {
 			}
 		}
 	}
-	slice := []string{}
+	temSplice := []string{}
 	for key := range smap {
-		slice = append(slice, key)
+		words := utils.SplitToWords(strings.ToLower(key))
+		temSplice = append(temSplice, words...)
+	}
+	found := make(map[string]bool)
+	for _, elem := range temSplice {
+		found[elem] = true
+	}
+	slice := []string{}
+	for k := range found {
+		slice = append(slice, k)
 	}
 	sort.Strings(slice)
 	return slice, nil
