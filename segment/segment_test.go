@@ -9,7 +9,7 @@ import (
 func open(filename string) *os.File {
 	f, err := os.Open(filename)
 	if err != nil {
-		log.Fatal("Unable to read file", err)
+		log.Fatalf("Unable to read file: %+v", err)
 	}
 	return f
 }
