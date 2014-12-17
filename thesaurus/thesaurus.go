@@ -18,7 +18,7 @@ import (
 // 		log.Fatal(err)
 // 	}
 // 	// map[verb:map[syn:[accredit account ascribe assign attribute bank calculate impute rely swear trust] ant:[debit]] noun:map[syn:[recognition credit entry deferred payment course credit citation cite acknowledgment reference mention quotation accomplishment accounting entry achievement annotation approval assets attainment commendation entry ledger entry notation note payment title] ant:[cash debit]]]
-// 	rs, err := api.GetSynonyms("health")
+// 	rs, err := api.Get("health")
 // 	if err != nil {
 // 		log.Fatal(err)
 // 	}
@@ -59,8 +59,8 @@ func NewCustom(client *http.Client) (*API, error) {
 
 const endpoint = "http://words.bighugelabs.com/api/2/%s/%s/json"
 
-// GetSynonyms returns the synonyms of an input word.
-func (a *API) GetSynonyms(word string) ([]string, error) {
+// Get returns the synonyms of an input word.
+func (a *API) Get(word string) ([]string, error) {
 	nword := strings.TrimSpace(word)
 	nword = strings.ToLower(nword)
 	url := fmt.Sprintf(endpoint, a.key, nword)
