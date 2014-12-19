@@ -1,4 +1,4 @@
-package spellcheck
+package spellcheck // import "github.com/gyuho/goling/spellcheck"
 
 import (
 	"io/ioutil"

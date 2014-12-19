@@ -1,4 +1,4 @@
-package utils
+package utils // import "github.com/gyuho/goling/utils"
 
 import (
 	"regexp"

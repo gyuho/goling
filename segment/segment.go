@@ -1,4 +1,4 @@
-package segment
+package segment // import "github.com/gyuho/goling/segment"
 
 import (
 	"bufio"

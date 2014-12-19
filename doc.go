@@ -1,2 +1,2 @@
 // Package goling is a set of packages in linguistics, natural language processing.
-package goling
+package goling // import "github.com/gyuho/goling"

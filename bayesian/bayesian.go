@@ -1,1 +1,1 @@
-package bayesian
+package bayesian // import "github.com/gyuho/goling/bayesian"
