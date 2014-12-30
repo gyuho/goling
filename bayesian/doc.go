@@ -1,2 +1,2 @@
 // Package bayesian implements Bayesian probability in Go.
-package bayesian
+package bayesian // import "github.com/gyuho/goling/bayesian"

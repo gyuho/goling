@@ -1,4 +1,4 @@
-package morphemekor // import "github.com/gyuho/goling/morphemekor"
+package morphemekor
 
 import (
 	"bytes"

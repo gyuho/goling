@@ -1,5 +1,5 @@
 // Package spellcheck implements spell checker algorithms.
-package spellcheck
+package spellcheck // import "github.com/gyuho/goling/spellcheck"
 
 /*
 norvig.com/spell-correct.html

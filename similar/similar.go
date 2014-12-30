@@ -1,4 +1,4 @@
-package similar // import "github.com/gyuho/goling/similar"
+package similar
 
 import (
 	"math"

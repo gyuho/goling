@@ -1,4 +1,4 @@
-package thesaurus // import "github.com/gyuho/goling/thesaurus"
+package thesaurus
 
 import (
 	"encoding/json"
