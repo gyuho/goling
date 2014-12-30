@@ -7,7 +7,7 @@ import (
 )
 
 func TestSuggest(t *testing.T) {
-	fmap := Frequency("../sample.txt")
+	fmap := Frequency("../testdata/sample.txt")
 	now := time.Now()
 	r1 := Suggest("korrecter", fmap)
 	fmt.Printf("r1 takes %v\n", float64(time.Since(now))/float64(1e9))
