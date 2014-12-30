@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/gyuho/goling/utils"
+	"github.com/gyuho/stringx"
 )
 
 // func main() {
@@ -88,7 +88,7 @@ func (a *API) Get(word string) ([]string, error) {
 	}
 	temSplice := []string{}
 	for key := range smap {
-		words := utils.SplitToWords(strings.ToLower(key))
+		words := stringx.SplitToWords(strings.ToLower(key))
 		temSplice = append(temSplice, words...)
 	}
 	found := make(map[string]bool)

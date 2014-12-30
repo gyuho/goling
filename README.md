@@ -7,7 +7,9 @@ Package goling provides natural language processing tools, including spell-check
 ## YouTube Tutorial by `gyuho`
 
 
-<a href="http://www.youtube.com/watch?v=927YDZH_MLo" target="_blank"><img src="http://img.youtube.com/vi/927YDZH_MLo/0.jpg"></a>- <a href="https://www.youtube.com/watch?v=dctzCcYt4AM&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD&index=1" target="_blank">Bayesian Classification</a>
+<a href="http://www.youtube.com/watch?v=927YDZH_MLo" target="_blank"><img src="http://img.youtube.com/vi/927YDZH_MLo/0.jpg"></a>
+
+- <a href="https://www.youtube.com/watch?v=dctzCcYt4AM&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD&index=1" target="_blank">Bayesian Classification</a>
 - <a href="https://www.youtube.com/watch?v=927YDZH_MLo&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD" target="_blank">String Similarity, Cosine Similarity, Levenshtein Distance</a>
 - <a href="https://www.youtube.com/watch?v=3qHx1VCcobY&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD" target="_blank">Spell Check</a>
 
