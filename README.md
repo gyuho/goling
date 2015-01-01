@@ -1,20 +1,10 @@
-goling [![Build Status](https://travis-ci.org/gyuho/goling.svg?branch=master)](https://travis-ci.org/gyuho/goling) [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/gyuho/goling)
+adsense [![Build Status](https://travis-ci.org/gyuho/adsense.svg?branch=master)](https://travis-ci.org/gyuho/adsense) [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/gyuho/adsense)
 ==========
 
-Package goling provides natural language processing tools, including spell-check, segmentation, bayesian, and string similarity algorithms, etc.
+Package adsense implements Google Adsense API client in Go.
 
 
 
 
-## YouTube Tutorial by `gyuho`
 
-
-<a href="http://www.youtube.com/watch?v=927YDZH_MLo" target="_blank"><img src="http://img.youtube.com/vi/927YDZH_MLo/0.jpg"></a>
-
-- <a href="https://www.youtube.com/watch?v=dctzCcYt4AM&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD&index=1" target="_blank">Bayesian Classification</a>
-- <a href="https://www.youtube.com/watch?v=927YDZH_MLo&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD" target="_blank">String Similarity, Cosine Similarity, Levenshtein Distance</a>
-- <a href="https://www.youtube.com/watch?v=3qHx1VCcobY&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD" target="_blank">Spell Check</a>
-
-
-
-<i>Last Updated at 2014-12-31 17:29:39</i>
+<i>Last Updated at 2014-12-31 17:29:41</i>
