@@ -24,6 +24,7 @@ import (
 
 // frequency calculates frequency probability.
 // For each word, divide frequency by the number of words.
+// reader can be any type that satisfies `io.Reader` interface: string stream, os.File, etc.
 func frequency(reader io.Reader) map[string]float64 {
 	scanner := bufio.NewScanner(reader)
 
