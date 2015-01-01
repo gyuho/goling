@@ -4,6 +4,8 @@ goling [![Build Status](https://travis-ci.org/gyuho/goling.svg?branch=master)](h
 Package goling provides natural language processing tools, including spell-check, segmentation, bayesian, and string similarity algorithms, etc.
 
 
+
+
 ## YouTube Tutorial by `gyuho`
 
 
@@ -14,3 +16,5 @@ Package goling provides natural language processing tools, including spell-check
 - <a href="https://www.youtube.com/watch?v=3qHx1VCcobY&list=PLT6aABhFfintOGKWVWz9qMxC3qZZdHQRD" target="_blank">Spell Check</a>
 
 
+
+<i>Last Updated at 2014-12-31 17:29:15</i>
