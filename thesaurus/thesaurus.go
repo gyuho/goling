@@ -25,7 +25,7 @@ import (
 // 	fmt.Println(rs)
 // }
 
-// API implements Merriam-Webster API client.
+// API implements http://words.bighugelabs.com/ API client.
 type API struct {
 	key string
 	*http.Client
