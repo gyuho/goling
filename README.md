@@ -19,4 +19,4 @@ Package goling provides natural language processing tools, including spell-check
 
 
 
-<i>README.md Updated at 2015-01-13 22:54:06</i>
+<i>README.md Updated at 2015-01-15 21:48:53</i>
