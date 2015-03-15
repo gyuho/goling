@@ -6,7 +6,7 @@ Package goling provides natural language processing tools, including spell-check
 
 
 
-## YouTube Tutorial by `gyuho`
+## YouTube Tutorial by <kbd>gyuho</kbd>
 
 
 <a href="http://www.youtube.com/watch?v=927YDZH_MLo" target="_blank"><img src="http://img.youtube.com/vi/927YDZH_MLo/0.jpg"></a>
@@ -19,4 +19,4 @@ Package goling provides natural language processing tools, including spell-check
 
 
 
-<i>README.md Updated at 2015-03-12 22:39:37</i>
+<i>README.md Updated at 2015-03-14 21:32:52</i>
