@@ -1,3 +1,2 @@
-// Package goling provides natural language processing tools, including spell-check,
-// segmentation, bayesian, and string similarity algorithms, etc.
+// Package goling provides natural language processing tools.
 package goling // import "github.com/gyuho/goling"
