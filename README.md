@@ -17,6 +17,4 @@ Package goling provides natural language processing tools.
 
 
 
-
-
 <i>README.md Updated at 2015-03-14 21:57:30</i>
