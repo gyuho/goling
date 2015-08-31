@@ -1,141 +1,138 @@
 package similar
 
 import (
+	"bytes"
 	"math"
-	"strings"
 )
 
-// Cosine is word-wise.
-// LevenshteinDistance is character-wise.
-// Both are useful to calculate the similarities of texts.
-// But note that this does not consider any meanings in context.
-// They literally calculate the similarities in physical letters.
-// Cosine Similarity is a measure of similarity between two vectors.
-// Return the cosine similarity of two texts.
-// similarity = cos(θ) = A·B/|A|*|B|
-// Used for analyzing the string similarity.
-// The similarity scales between 0 and 1(maximum).
-// The bigger the return value is, the more similar the two texts are.
-// cos 0° = 1, cos 90° = 0
-// 0° means that the two texts are equal, since two sequences point to the same point.
-// 90° means that the two texts are totally different.
-func Cosine(str1, str2 string) float64 {
-	// to clear out the unnecessary characters
-	// And consider the case that the string has only one word.
-	// temp1 := stringx.SplitToWords(strings.ToLower(str1))
-	// sli1 := []string{}
-	// if len(temp1) == 1 {
-	// 	sli1 = strings.Split(temp1[0], "")
-	// } else {
-	// 	sli1 = temp1
-	// }
-	// temp2 := stringx.SplitToWords(strings.ToLower(str2))
-	// sli2 := []string{}
-	// if len(temp2) == 1 {
-	// 	sli2 = strings.Split(temp2[0], "")
-	// } else {
-	// 	sli2 = temp2
-	// }
-
-	// to convert string to vector
-	// to associate each character with its frequency values in string
-	// vect1 contains the frequencies of each character
-	vect1 := make(map[string]int)
-	for _, elem := range strings.Split(str1, "") {
-		vect1[elem]++
+// Get returns the string similarity from the functions.
+// Predefined functions in this package use the scale from 0 to 1
+// with higher value for more similar texts.
+func Get(txt1, txt2 []byte, functions ...func([]byte, []byte) float64) float64 {
+	rs := 0.0
+	for _, f := range functions {
+		rs += f(txt1, txt2)
 	}
-	// vect2 contains the frequencies of each character
-	vect2 := make(map[string]int)
-	for _, elem := range strings.Split(str2, "") {
-		vect2[elem]++
-	}
-
-	// intersection contains common characters
-	intersection := []string{}
-	// traverse keys and add what is common to both.
-	// (keys, in Hash/Map, are like indices in array)
-	for key := range vect1 {
-		if _, exist := vect2[key]; exist {
-			intersection = append(intersection, key)
-		}
-	}
-
-	// If all the vector elements are equal, cos will be 1.
-	// Equal texts return the value 1.
-	// We need to traverse the intersection(common) characters of texts.
-	// In doing so, we can expect two same texts to return 1, cos 0°
-
-	// to calculate A·B
-	sum := 0.0
-	for _, elem := range intersection {
-		sum += float64(vect1[elem]) * float64(vect2[elem])
-	}
-	numerator := sum
-
-	// to calculate |A|*|B|
-	sum1 := 0.0
-	for key := range vect1 {
-		sum1 += math.Pow(float64(vect1[key]), 2)
-	}
-	sum2 := 0.0
-	for key := range vect2 {
-		sum2 += math.Pow(float64(vect2[key]), 2)
-	}
-	denominator := math.Sqrt(sum1) * math.Sqrt(sum2)
-
-	// smoothing because we can't divide by 0
-	if numerator == 0.0 || denominator == 0.0 {
-		return 0.0001
-	}
-	return float64(numerator) / denominator
+	return rs
 }
 
-// Levenshtein is a string metric for measuring the difference between two sequences.
-// Levenshtein edit distance between two words is the minimum
-// number of single-character edits (insertion, deletion, substitution)
-// required to change one word into the other.
-// The bigger the return value is, the less similar the two texts are
-// because different texts take more edits than similar texts.
-// Insertion, deletion, and substitution each costs 1 edit.
-func Levenshtein(str1, str2 string) float64 {
-	// to clear out the unnecessary characters
-	// str1 = stringx.ReplaceNonAlnum(str1, " ")
-	// str2 = stringx.ReplaceNonAlnum(str2, " ")
-
-	// initialize the distance array, with position
-	distance := make2Dslice(len(str1)+1, len(str2)+1)
-	for y := 0; y <= len(str1); y++ {
-		distance[y][0] = y
+// Cosine converts texts to vectors
+// associatting each chracter with its frequncy
+// and caculates cosine similarities.
+// (https://en.wikipedia.org/wiki/Cosine_similarity)
+func Cosine(txt1, txt2 []byte) float64 {
+	vect1 := make(map[byte]int)
+	for _, t := range txt1 {
+		vect1[t]++
 	}
-	for x := 0; x <= len(str2); x++ {
-		distance[0][x] = x
+	vect2 := make(map[byte]int)
+	for _, t := range txt2 {
+		vect2[t]++
 	}
+	//
+	// dot-product two vectors
+	// map[byte]int return 0 for non-existing key
+	// and if two texts are equal, product will be highest
+	// and if two texts are totally different, it will be 0
+	//
+	// to calculate A·B
+	dotProduct := 0.0
+	for k, v := range vect1 {
+		dotProduct += float64(v) * float64(vect2[k])
+	}
+	// to calculate |A|*|B|
+	sum1 := 0.0
+	for _, v := range vect1 {
+		sum1 += math.Pow(float64(v), 2)
+	}
+	sum2 := 0.0
+	for _, v := range vect2 {
+		sum2 += math.Pow(float64(v), 2)
+	}
+	magnitude := math.Sqrt(sum1) * math.Sqrt(sum2)
+	if magnitude == 0 {
+		return 0.0
+	}
+	return float64(dotProduct) / float64(magnitude)
+}
 
-	for i := 0; i < len(str1); i++ {
-		for j := 0; j < len(str2); j++ {
-			edit := 1
-			if str1[i] == str2[j] {
-				edit = 0
+// Hamming returns the normalized similarity value.
+// hamming distance is the number of differing "bits".
+// hamming distance is minimum number of substitutions
+// required to change one string into the other
+// (https://en.wikipedia.org/wiki/Hamming_distance)
+func Hamming(txt1, txt2 []byte) float64 {
+	switch bytes.Compare(txt1, txt2) {
+	case 0: // txt1 == txt2
+	case 1: // txt1 > txt2
+		temp := make([]byte, len(txt1))
+		copy(temp, txt2)
+		txt2 = temp
+	case -1: // txt1 < txt2
+		temp := make([]byte, len(txt2))
+		copy(temp, txt1)
+		txt1 = temp
+	}
+	if len(txt1) != len(txt2) {
+		panic("Undefined for sequences of unequal length")
+	}
+	count := 0
+	for idx, b1 := range txt1 {
+		b2 := txt2[idx]
+		xor := b1 ^ b2 // 1 if bits are different
+		//
+		// bit count (number of 1)
+		// http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetNaive
+		//
+		// repeat shifting from left to right (divide by 2)
+		// until all bits are zero
+		for x := xor; x > 0; x >>= 1 {
+			// check if lowest bit is 1
+			if int(x&1) == 1 {
+				count++
 			}
-			// distance[i][j+1] + 1 : delete/insert from str1
-			// distance[i+1][j] + 1 : delete/insert from str2
-			// distance[i][j] + edit : delete/insert from both
-			distance[i+1][j+1] = getMin(
-				distance[i][j+1]+1,
-				distance[i+1][j]+1,
-				distance[i][j]+edit,
+		}
+	}
+	if count == 0 {
+		// similarity is 1 for equal texts.
+		return 1
+	}
+	return float64(1) / float64(count)
+}
+
+// Levenshtein returns the similarity using levenshtein distance.
+// (https://en.wikipedia.org/wiki/Levenshtein_distance)
+func Levenshtein(txt1, txt2 []byte) float64 {
+	// initialize the distance array, with position
+	mat := create2Dslice(len(txt1)+1, len(txt2)+1)
+	for i := 0; i < len(txt1)+1; i++ {
+		mat[i][0] = i
+	}
+	for i := 0; i < len(txt2)+1; i++ {
+		mat[0][i] = i
+	}
+	for i := 0; i < len(txt1); i++ {
+		for j := 0; j < len(txt2); j++ {
+			edit := 0
+			if txt1[i] != txt2[j] {
+				edit = 1
+			}
+			mat[i+1][j+1] = min(
+				mat[i][j+1]+1,  // from txt1
+				mat[i+1][j]+1,  // from txt2
+				mat[i][j]+edit, // from both
 			)
 		}
 	}
-	if distance[len(str1)][len(str2)] == 0 {
-		// smoothing
-		return 0.0001
+	distance := mat[len(txt1)][len(txt2)]
+	if distance == 0 {
+		// similarity is 1 for equal texts.
+		return 1
 	}
-
-	return float64(distance[len(str1)][len(str2)])
+	return float64(1) / float64(distance)
 }
 
-func getMin(more ...int) int {
+func min(more ...int) int {
 	min := more[0]
 	for _, elem := range more {
 		if min > elem {
@@ -145,27 +142,10 @@ func getMin(more ...int) int {
 	return min
 }
 
-func make2Dslice(row, column int) [][]int {
+func create2Dslice(row, column int) [][]int {
 	mat := make([][]int, row)
 	for i := range mat {
 		mat[i] = make([]int, column)
 	}
 	return mat
-}
-
-// Get returns the similarity of two string using Cosing similarity and Levenshtein distance.
-// Higher number means higher similarity. It is up to users to preprossess input texts.
-func Get(str1, str2 string) float64 {
-	// Higher means higher similarity
-	sim1 := Cosine(str1, str2)
-
-	// Lower means higher similarity
-	siml2 := Levenshtein(str1, str2)
-	sim2 := (1.0 / float64(siml2)) * 1000
-
-	// siml3 := Levenshtein(stringx.DeleteSpace(str1), stringx.DeleteSpace(str2))
-	// sim3 := (1.0 / float64(siml3)) * 1000
-
-	// return math.Sqrt(sim1*sim2*sim3) * 100
-	return math.Sqrt(sim1*sim2) * 100
 }
