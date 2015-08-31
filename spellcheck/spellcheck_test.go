@@ -2,12 +2,22 @@ package spellcheck
 
 import (
 	"fmt"
+	"log"
+	"os"
 	"testing"
 	"time"
 )
 
+func open(filename string) *os.File {
+	f, err := os.Open(filename)
+	if err != nil {
+		log.Fatalf("Unable to read file: %+v", err)
+	}
+	return f
+}
+
 func TestSuggest(t *testing.T) {
-	fmap := Frequency("../testdata/sample.txt")
+	fmap := Frequency(open("../testdata/sample.txt"))
 	now := time.Now()
 	r1 := Suggest("korrecter", fmap)
 	fmt.Printf("r1 takes %v\n", float64(time.Since(now))/float64(1e9))
