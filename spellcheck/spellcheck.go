@@ -95,6 +95,7 @@ func known(txt string, distFunc func(string, chan string), fmap map[string]int) 
 }
 
 // Suggest suggests the correct spelling based on the sample data.
+// (http://norvig.com/spell-correct.html)
 func Suggest(txt string, fmap map[string]int) string {
 	// edit distance 0
 	if _, exist := fmap[txt]; exist {
