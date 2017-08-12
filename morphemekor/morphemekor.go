@@ -96,11 +96,11 @@ func Segment(str string) string {
 		// Check if the character is inflection
 		if _, ok := isInflection1[elem]; ok {
 			buffer.Add(elem)
-			// Check the next chracter
+			// Check the next character
 			if len(characters) > idx+1 {
 				nelem1 := characters[idx+1]
 				if _, ok := isTargetEnding1[nelem1]; ok {
-					// Check the second next chracter
+					// Check the second next character
 					if len(characters) > idx+2 {
 						nelem2 := characters[idx+2]
 						if _, ok := isTargetEnding2[nelem1+nelem2]; ok {
