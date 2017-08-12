@@ -17,7 +17,7 @@ func Get(txt1, txt2 []byte, functions ...func([]byte, []byte) float64) float64 {
 }
 
 // Cosine converts texts to vectors
-// associatting each chracter with its frequncy
+// associatting each character with its frequncy
 // and caculates cosine similarities.
 // (https://en.wikipedia.org/wiki/Cosine_similarity)
 func Cosine(txt1, txt2 []byte) float64 {
